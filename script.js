@@ -29,6 +29,30 @@ document.addEventListener('DOMContentLoaded', function () {
             div.innerText = " ";
         })
 
+        let colors= ['blue', 'yellow', 'green', 'grey', 'red']
         
+        function getRandomColor() {
+            let randomColor = colors[Math.floor(Math.random()*colors.length)];
+            return randomColor;
+        }
+
+        div.addEventListener('click', function() {
+            let selectColor = getRandomColor();
+            div.style.backgroundColor = selectColor;
+        })
+
+        div.addEventListener("dblclick", function(){
+            if(id % 2 == 0){
+                this.remove();
+            } else {
+                alert("This Square will longer exist");
+            }
+
+            if (id % 2 != 0){
+                this.remove();
+            } else {
+                alert("This Square will no longer exist");
+            }
+        })
     })
 })
