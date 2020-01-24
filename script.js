@@ -1,21 +1,34 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let button = document.createElement('button');
-    let btn = document.createTextNode("Add Square"); 
-    let conDiv =document.createElement('div');
+    let btn = document.createTextNode("Add Square");
+    let conDiv = document.createElement('div');
+    conDiv.style.display = "flex";
+    conDiv.style.flexWrap = "wrap";
     button.appendChild(btn);
     document.body.appendChild(button);
     document.body.appendChild(conDiv);
 
-    button.addEventListener("click",function() {
+    let id = 0;
+    button.addEventListener("click", function () {
         let div = document.createElement("div");
-        conDiv.appendChild(div); 
-        div.className ="div1";
+        div.className = "subDiv";
         div.style.backgroundColor = "black";
         div.style.height = "100px";
-        div.style.width = "100px"; 
-        div.style.cssFloat = 'left';
-        //div.style.margin ="1em";
-        //div.style.flexDirection = "row-reverse"; 
-        document.body.appendChild(div);
+        div.style.width = "100px";
+        div.style.margin = "1em";
+        div.setAttribute("id", id); // set a attribute, nave a name and value in ()
+        conDiv.appendChild(div);
+        id++;
+
+        div.addEventListener("mouseover", function() {
+            let divText = document.createTextNode(this.id);
+            div.appendChild(divText);
+        })
+
+        div.addEventListener("mouseout", function() {
+            div.innerText = " ";
+        })
+
+        
     })
 })
